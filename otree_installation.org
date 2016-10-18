@@ -1,0 +1,198 @@
+#+AUTHOR: Felix Albrecht
+#+TITLE: Otree Installation
+#+LATEX_HEADER: \usepackage[bitstream-charter]{mathdesign}   % fontstyle
+#+LATEX_HEADER: \usepackage{xcolor}
+#+LATEX_HEADER: \setlength\parskip{1ex}
+#+LATEX_HEADER: \setlength\parindent{0}
+#+LATEX_HEADER: \usepackage{a4wide}
+#+LATEX_HEADER: \newcommand{\mscode}[1]{\colorbox{blue!40!black}{\footnotesize\color{white}\tt #1}}
+#+LATEX_HEADER: \newcommand{\maccode}[1]{{\footnotesize\color{black}\tt #1}}
+#+LATEX_HEADER: \newcommand{\lincode}[1]{\colorbox{black}{\footnotesize\color{green}\tt #1}}
+
+
+* Windows
+
+** Required Software
+
+*** Python (= 3.5.x)
+
+**** Quick Installation
+
+I recommend installing the [[https://www.continuum.io/downloads][Anaconda Python 3.5 Environment]]. It's an easy to install version of python that comes with numerous bells and whistles.
+You find the link to the website here: https://www.continuum.io/downloads
+
+**** Advanced Installation
+
+Alternatively you can install [[https://www.python.org/downloads/release/python-352/][raw python]]. However, this requires you to manually set the system path variables.
+
+*Note:* A Python 2.7.x installation is insufficient. Not all current features of otree work with Python 2.7.x.
+
+*Note 2:* Do NOT install the recently made available Python 3.6 beta. Compatibility to the current version of otree is not assured.
+
+*** otree (> 0.9.5)
+
+Access the Windows powershell. Enter \mscode{pip3 install -U otree-core}. (Userspace installation of otree) Pip3 will download all required packages and install them into your system.
+
+** Running otree
+
+Open the powershell and navigate to the directory \mscode{cd \textasciitilde\textbackslash\ldots} where you want your otree project folder to be located.
+
+Generate you first otree project with \mscode{otree startproject otree\_project}.
+
+*Note:* You might experience the following error:
+
+\mscode{error: Microsoft Visual C++ 9.0 is required (Unable to find vcvarsall.bat). ...}
+
+ If you do, you need to install the [[http://go.microsoft.com/fwlink/?LinkId=691126][Visual C++ Build Tools]].
+ 
+
+** Recommended Software
+
+*** git (Version control and collaboration)
+I recommend using [[https://tortoisegit.org/][Tortoise-Git]]. It offers easy Windows Shell integration and Right-Click Menu operations on Git Repository folders.
+
+If you like a graphical interface in addition to the terminal, the [[https://www.sourcetreeapp.com/][Sourcetree App]] is supposed to be easy to use.
+
+*** Pycharm (Python / Django IDE)
+    The texteditor [[http://www.jetbrains.com/pycharm/][Pycharm]] is optimized for Python development and offers many features that make Python editing and project management much easier and quicker. It offers direct integration with the above mentioned Git.
+
+
+    \newpage
+
+* Mac OSX
+** Required Software
+
+*** Python (= 3.5.x)
+
+**** Quick Installation
+
+I recommend installing the [[https://www.continuum.io/downloads][Anaconda Python 3.5 Environment]]. It's an easy to install version of python that comes with numerous bells and whistles.
+You find the link to the website here: https://www.continuum.io/downloads
+
+**** Advanced Installation
+
+Installing Python via /Homebrew/.
+
+In a terminal window input: \maccode{xcode-select --install}
+
+When propted for the installation parameters input:
+
+\maccode{ruby -e "\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"}
+
+Set the PATH variable for the homebrew environment:
+
+\maccode{echo "export PATH=/usr/local/bin:/usr/local/sbin:\textbackslash\$PATH" >> \textasciitilde/.bash\_profile}
+
+Reload the you terminal config:
+
+\maccode{source ~/.bash_profile}
+
+Install Python 3:
+
+\maccode{brew install python3}
+
+You can check if everything went well with:
+
+\maccode{pip3 -V}
+
+*** otree (> 0.9.5)
+
+In the terminal window enter: 
+
+\maccode{pip3 install -U otree-core}. 
+
+(Userspace installation of otree) Pip3 will download all required packages and install them into your system.
+
+** Running otree
+
+Open a new terminal window and navigate to the directory \maccode{cd \textasciitilde/\ldots} where you want your otree project folder to be located.
+
+Generate your first otree project with \maccode{otree startproject otree\_project} .
+
+** Recommended Software
+
+*** git (Version control and collaboration)
+    
+You can download git from here https://git-scm.com/download/mac .
+
+If you like a graphical interface in addition to the terminal, the [[https://www.sourcetreeapp.com/][Sourcetree App]] is supposed to be easy to use. But note this is just a frontend you will still need to install git.
+
+*** Pycharm (Python / Django IDE)
+    The texteditor [[http://www.jetbrains.com/pycharm/][Pycharm]] is optimized for Python development and offers many features that make Python editing and project management much easier and quicker. It offers direct integration with the above mentioned Git.
+
+
+    \newpage
+
+* Linux (Ubuntu 16.04)
+
+** Required Software
+
+*** Python 3.x
+
+Ubuntu 16.04 by default come with an installation of Python 3.5. But you will need to install \texttt{pip3}.
+I recommend installing everything in one go. 
+In the console enter:
+
+\lincode{sudo apt install python3-pip git}
+
+As Ubuntu comes with Python 2.7.x and 3.5.x the default is mapped to 2.7.x. To make handling python and pip quicker you can assign aliases to the commands.
+
+At the end of \texttt{\textasciitilde/.bashrc} insert:
+
+\lincode{alias python=python3}\\
+\lincode{alias pip=pip3}
+
+*** otree (> 0.9.5)
+
+In the console enter: 
+
+\lincode{pip3 install -U otree-core}. 
+
+(Userspace installation of otree) Pip3 will download all required packages and install them into your system.
+For a systemwide installation do:
+
+\lincode{sudo pip3 install otree-core}. 
+
+I recommend doing a systemwide installation as it allows you to run your own production server as non-root user.
+
+** Running otree
+
+Open a new terminal window and navigate to the directory \lincode{cd \textasciitilde/\ldots} where you want your otree project folder to be located.
+
+Generate your first otree project with \lincode{otree startproject otree\_project} .
+
+** Recommended Software
+
+*** Pycharm (Python / Django IDE)
+
+You can install Pycharm from a launchpad repository.
+
+\lincode{sudo add-apt-repository ppa:mystic-mirage\/pycharm}\\
+\lincode{sudo apt update}\\
+\lincode{sudo apt install pycharm}\\
+
+*** Personal recommendation
+
+For efficient editing and serverside console editing try learning Vim. Every Linux based server offers a version of Vi(m) for quick file editing. I personally use Emacs(Spacemacs) with a Vim runtime environment.
+
+* Otree / Web-development Links
+
++ [[http://otree.readthedocs.io][otree online documentation and examples]]
++ [[https://groups.google.com/forum/#!forum/otree][otree Mailing list]]
+  * contains many examples and solutions for problems
+  * very active list
+  * requires subscription to list
++ [[http://www.w3schools.com/js/][W3School Javascript Documentation]]
+  * otree is web technology based. Many animations and client side feature require javascript. This is the most comprehensive online documentation.
++ [[http://jquery.com/][JQuery - Advanced Javascript animations]]
+  * otree come preloadeds with JQuery to support quick and easy javascript animations.
++ [[http://www.w3schools.com/bootstrap/][Bootstrap - Advanced CSS]]
+  * otree come preloaded with the bootstrap CSS framework for beautiful buttons and web-design elements.
++ [[http://www.learnpython.org/][Python coding tutorial]]
+  * otree is based on the [[https://www.djangoproject.com/][Django Web-Framework]] and relies heavily on python. This is goo tutorial to get started with python3.
+  * Alternatively I recommend the [[https://www.codecademy.com/][Codecademy Python Course]].
+
+
+
+\vfill
+Materials available on: https://github.com/cataclysmic/otree-intro
