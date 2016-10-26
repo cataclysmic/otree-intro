@@ -1,0 +1,112 @@
+/*
+
+Zenburn style from voldmar.ru (c) Vladimir Epifanov <voldmar@voldmar.ru>
+based on dark.css by Ivan Sagalaev
+
+*/
+/* ROUNDED ONE */
+/* .roundedOne {
+	width: 28px;
+	height: 28px;
+	background: #fcfff4;
+
+	background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+	background: -moz-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+	background: -o-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+	background: -ms-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+	background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#b3bead',GradientType=0 );
+	margin: 20px auto;
+
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	border-radius: 50px;
+
+	-webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+	-moz-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+	box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+	position: relative;
+}
+*/
+
+i{
+	color:#008000 !important;
+}
+
+b{
+	color:#7b68ee !important;
+}
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #ffffff;
+  color: #000000 !important;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-tag {
+  color: #00008b !important;
+}
+
+.hljs-template-tag {
+  color: #006400 !important;
+}
+
+.hljs-number {
+  color: #40e0d0 !important;
+}
+
+.hljs-variable,
+.hljs-template-variable,
+.hljs-attribute {
+  color: #efdcbc !important;
+}
+
+.hljs-literal {
+  color: #efefaf !important;
+}
+
+.hljs-subst {
+  color: #8f8f8f !important;
+}
+
+.hljs-title,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-section,
+.hljs-type {
+  color: #efef8f !important;
+}
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-link {
+  color: #40e0d0 !important;
+}
+
+.hljs-deletion,
+.hljs-string,
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #8b0000 !important;
+}
+
+.hljs-addition,
+.hljs-comment,
+.hljs-quote,
+.hljs-meta {
+  color: #006400 !important;
+}
+
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}

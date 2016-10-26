@@ -1,0 +1,124 @@
+# Intro otree programming tutorial
+# Configure the slides
+#+REVEAL_HLEVEL: 1
+#+REVEAL_THEME: night
+# OPTIONS: reveal_slide_number:nil
+#+OPTIONS: num:nil
+#+OPTIONS: toc:nil
+# OPTIONS: reveal_single_file:t
+#+OPTIONS: reveal_title_slide:auto
+#+REVEAL_MATHJAX_URL: file:///home/cataclysmic/Research/teaching/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+#+REVEAL_ROOT: file:///home/cataclysmic/Research/teaching/reveal.js/
+# REVEAL_ROOT: http://lab.hakim.se/reveal-js/
+#+REVEAL_PLUGINS: (highlight markdown)
+#+REVEAL_HIGHLIGHT_CSS: stata.css
+# ####################################
+#+TITLE: Getting started with oTree
+#+SUBTITLE: -- Project Module M.Sc. -- 
+#+AUTHOR: Felix Albrecht
+#+EMAIL: f.albrecht@uni-bonn.de
+#+WEBSITE: felixalbrecht.net
+
+* Why oTree for experiments?
+
+** EMPTY
+
+1) Modern interface
+2) *Works on _all_ platforms* that support modern browsers (PCs, mobile devices)
+3) *WebApp* - availability of modern web capabilities
+   - i.e., animations, video streaming, mouse movement recording
+4) Quickly gains a large following in the experimental community
+
+* What's in it for me?
+
+** EMPTY
+
+- +You need it for this course!+
+- Learn a (several) *new skill(s)*!
+- Learn (about web)-programming!
+  - oTree is based on:
+    - Django (Python for web), HTML5, JavaScript, CSS, JQuery, HighCharts
+- Learn about modern graphing libraries for web GUIs
+
+* Let's look at examples!
+    :PROPERTIES:
+    :reveal_background: #006400
+    :END:
+
+* Goals for today!
+
+** EMPTY
+
+1) Understanding the structure of an oTree-App
+2) Programming our first oTree-app
+3) Taking a peek at online-resources 
+
+
+* Disclaimer
+
+1) I will be _quick_ ... so *ask me* stuff.
+2) I cannot teach you `programming'.
+   - *Programming takes practice.*
+3) You won't understand everything on the first go.
+   - Don't get frustrated. It takes practice.
+
+* Therefore, ...
+
+1) take a look at the materials.
+   - I will make the materials available on Github and eCampus.
+2) use the links on the last page of the otree\_installation.pdf.
+3) use online ressources and ask questions.
+
+* Today's Roadmap
+
+** Create your working environment
+
+1. [ ] create a project folder
+#+BEGIN_SRC bash
+cd ~/PATH_TO_FOLDER
+otree startproject otree_project
+#+END_SRC
+2. [ ] create an app inside the project folder
+#+BEGIN_SRC bash
+cd ./otree_project
+otree startapp trust_c
+#+END_SRC
+
+** Trust game (quick reminder)
+
+1. Truster receives endowment
+2. Truster sends nothing/part/all of endowment to trustee
+3. Experimenter increases money by some multiplier
+4. Trustee (hopefully) sends money back to truster
+5. Both receive respective payoff
+
+** What do we need _in_ the app?
+
+1. Introduction page for game
+2. Somewhere to store sent amount (of truster)
+3. Somewhere to store sent back amount (of trustee)
+4. Mechanism to increase sent amount
+5. Mechanism to calculate payoff
+6. Maybe a Survey?
+
+* Let's understand the structure of an "App"
+
+** EMPTY
+    :PROPERTIES:
+    :reveal_background: #ffffff
+    :END:
+
+#+attr_html: :width 400px
+[[./join.png]]
+
+
+** What do we need _in_ the app?
+
+1. [ ] Introduction page for game
+2. [ ] Somewhere to store sent amount (of truster)
+3. [ ] Somewhere to store sent back amount (of trustee)
+4. [ ] Mechanism to increase sent amount
+5. [ ] Mechanism to calculate payoff
+6. [ ] Maybe a Survey? -> Second App
+
+
