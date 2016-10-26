@@ -36,12 +36,13 @@
 - +You need it for this course!+
 - Learn a (several) *new skill(s)*!
 - Learn (about web)-programming!
-  - oTree is based on:
-    - Django (Python for web), HTML5, JavaScript, CSS, JQuery, HighCharts
+  - oTree is based on: *Django* (Python for web), *HTML5*, *JavaScript*, *CSS*
+  - uses heavily: /JQuery/, /Bootstrap/, /HighCharts/
 - Learn about modern graphing libraries for web GUIs
 
 * Let's look at examples!
     :PROPERTIES:
+    :reveal_background: #006400
     :reveal_background: #006400
     :END:
 
@@ -71,14 +72,19 @@
 
 * Today's Roadmap
 
+
 ** Create your working environment
 
-1. [ ] create a project folder
+0. install otree
+#+BEGIN_SRC bash
+pip install otree_core
+#+END_SRC
+1. create a project folder
 #+BEGIN_SRC bash
 cd ~/PATH_TO_FOLDER
 otree startproject otree_project
 #+END_SRC
-2. [ ] create an app inside the project folder
+2. create an app inside the project folder
 #+BEGIN_SRC bash
 cd ./otree_project
 otree startapp trust_c
@@ -88,7 +94,7 @@ otree startapp trust_c
 
 1. Truster receives endowment
 2. Truster sends nothing/part/all of endowment to trustee
-3. Experimenter increases money by some multiplier
+3. Experimenter (software) increases money by some multiplier
 4. Trustee (hopefully) sends money back to truster
 5. Both receive respective payoff
 
@@ -108,7 +114,7 @@ otree startapp trust_c
     :reveal_background: #ffffff
     :END:
 
-#+attr_html: :width 400px
+#+attr_html: :width 600px
 [[./join.png]]
 
 

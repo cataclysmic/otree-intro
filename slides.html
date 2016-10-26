@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Getting started with oTree</title>
+<meta name="author" content="(Felix Albrecht)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="file:///home/cataclysmic/Research/teaching/reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="file:///home/cataclysmic/Research/teaching/reveal.js/css/theme/night.css" id="theme"/>
+
+<link rel="stylesheet" href="stata.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'file:///home/cataclysmic/Research/teaching/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Getting started with oTree</h1><h2 class="author">Felix Albrecht</h2><p class="date">Created: 2016-10-26 Mi 19:44</p>
+</section>
+
+<section>
+<section id="slide-orgheadline2">
+<h2 id="orgheadline2">Why oTree for experiments?</h2>
+<div class="outline-text-2" id="text-orgheadline2">
+</div></section>
+<section id="slide-orgheadline1">
+<h3 id="orgheadline1"></h3>
+<ol>
+<li>Modern interface</li>
+<li><b>Works on <span class="underline">all</span> platforms</b> that support modern browsers (PCs, mobile devices)</li>
+<li><b>WebApp</b> - availability of modern web capabilities
+<ul>
+<li>i.e., animations, video streaming, mouse movement recording</li>
+
+</ul></li>
+<li>Quickly gains a large following in the experimental community</li>
+
+</ol>
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline4">
+<h2 id="orgheadline4">What's in it for me?</h2>
+<div class="outline-text-2" id="text-orgheadline4">
+</div></section>
+<section id="slide-orgheadline3">
+<h3 id="orgheadline3"></h3>
+<ul>
+<li><del>You need it for this course!</del></li>
+<li>Learn a (several) <b>new skill(s)</b>!</li>
+<li>Learn (about web)-programming!
+<ul>
+<li>oTree is based on: <b>Django</b> (Python for web), <b>HTML5</b>, <b>JavaScript</b>, <b>CSS</b></li>
+<li>uses heavily: <i>JQuery</i>, <i>Bootstrap</i>, <i>HighCharts</i></li>
+
+</ul></li>
+<li>Learn about modern graphing libraries for web GUIs</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline5" data-background="#006400">
+    <h2 id="orgheadline5"><font  color="#ffffff">Let's look at examples!</font></h2>
+<ol>
+<li>But before ... install otree</li>
+<div class="org-src-container">
+<pre><code class="bash" > pip install otree_core
+</code></pre>
+</div>
+</ol>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline7">
+<h2 id="orgheadline7">Goals for today!</h2>
+<div class="outline-text-2" id="text-orgheadline7">
+</div></section>
+<section id="slide-orgheadline6">
+<h3 id="orgheadline6"></h3>
+<ol>
+    <li><h4>Understanding the structure of an oTree-App</h4></li>
+        <li><h4>Programming our first oTree-app</h4></li>
+            <li><h4>Taking a peek at online-resources</h4></li>
+
+</ol>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline8">
+<h2 id="orgheadline8">Disclaimer</h2>
+<ol>
+<li>I will be <span class="underline">quick</span> &#x2026; so <b>ask me</b> stuff.</li>
+<li>I cannot teach you `programming'.
+<ul>
+<li><b>Programming takes practice.</b></li>
+
+</ul></li>
+<li>You won't understand everything on the first go.
+<ul>
+<li>Don't get frustrated. It takes practice.</li>
+
+</ul></li>
+
+</ol>
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline9">
+<h2 id="orgheadline9">Therefore, &#x2026;</h2>
+<ol>
+<li>take a look at the materials.
+<ul>
+<li>I will make the materials available on Github and eCampus.</li>
+
+</ul></li>
+<li>use the links on the last page of the otree_installation.pdf.</li>
+<li>use online ressources and ask questions.</li>
+
+</ol>
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline13">
+<h2 id="orgheadline13">Today's Roadmap</h2>
+<div class="outline-text-2" id="text-orgheadline13">
+</div></section>
+<section id="slide-orgheadline10">
+<h3 id="orgheadline10">Create your working environment</h3>
+<ol>
+<li>create a project folder</li>
+<div class="org-src-container">
+<pre><code class="bash" >cd ~/PATH_TO_FOLDER
+otree startproject otree_project
+</code></pre>
+</div>
+<li>create an app inside the project folder</li>
+<div class="org-src-container">
+<pre><code class="bash" >cd ./otree_project
+otree startapp trust_c
+</code></pre>
+</div>
+</ol>
+
+</section>
+<section id="slide-orgheadline11">
+<h3 id="orgheadline11">Trust game (quick reminder)</h3>
+<ol>
+<li>Truster receives endowment</li>
+<li>Truster sends nothing/part/all of endowment to trustee</li>
+<li>Experimenter (software) increases money by some multiplier</li>
+<li>Trustee (hopefully) sends money back to truster</li>
+<li>Both receive respective payoff</li>
+
+</ol>
+
+</section>
+<section id="slide-orgheadline12">
+<h3 id="orgheadline12">What do we need <span class="underline">in</span> the app?</h3>
+<ol>
+<li>Introduction page for game</li>
+<li>Somewhere to store sent amount (of truster)</li>
+<li>Somewhere to store sent back amount (of trustee)</li>
+<li>Mechanism to increase sent amount</li>
+<li>Mechanism to calculate payoff</li>
+<li>Maybe a Survey?</li>
+
+</ol>
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline16">
+<h2 id="orgheadline16">Let's understand the structure of an "App"</h2>
+<div class="outline-text-2" id="text-orgheadline16">
+</div></section>
+<section id="slide-orgheadline14" data-background="#ffffff">
+<h3 id="orgheadline14"></h3>
+
+<div class="figure">
+    <p><a href="./join.svg"><img src="./join.png" alt="join.png" width="600px" /></a>
+</p>
+</div>
+
+
+</section>
+<section id="slide-orgheadline15">
+<h3 id="orgheadline15">What do we need <span class="underline">in</span> the app?</h3>
+<ol>
+    <li class="off"><input type="checkbox"> Introduction page for game</li>
+    <li class="off"><input type="checkbox"> Somewhere to store sent amount (of truster)</li>
+    <li class="off"><input type="checkbox"> Somewhere to store sent back amount (of trustee)</li>
+    <li class="off"><input type="checkbox"> Mechanism to increase sent amount</li>
+    <li class="off"><input type="checkbox"> Mechanism to calculate payoff</li>
+    <li class="off"><input type="checkbox"> Maybe a Survey? -&gt; Second App</li>
+
+</ol>
+</section>
+</section>
+</div>
+</div>
+<script src="file:///home/cataclysmic/Research/teaching/reveal.js/lib/js/head.min.js"></script>
+<script src="file:///home/cataclysmic/Research/teaching/reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'file:///home/cataclysmic/Research/teaching/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+ { src: 'file:///home/cataclysmic/Research/teaching/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'file:///home/cataclysmic/Research/teaching/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } }]
+});
+</script>
+</body>
+</html>

@@ -37,6 +37,13 @@ b{
 	color:#7b68ee !important;
 }
 
+h2{
+    color:#e7ad52 !important;
+}
+
+.reveal .slides ol li{ margin:30px 20px 20px 0; vertical-align:top}
+.reveal .slides ul li{ margin:30px 20px 20px 0; vertical-align:top}
+
 .hljs {
   display: block;
   overflow-x: auto;
