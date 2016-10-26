@@ -1,0 +1,257 @@
+
+
+
+#+BEGIN_SRC dot :file global.png :exports results
+
+digraph G {
+	subgraph cluster_1 {
+		node [style=filled,shape=folder,colorscheme=set312,color=2, fontname="Dejavu Sans"];
+    public_goods;
+    App3 ;
+    App2 ;
+    App1 ;
+    node [style=empty,color=5]
+    "settings.py" [shape=note]; 
+    label="OTREE PROJECT FOLDER";
+		color=blue;
+    fontname="Dejavu Sans";
+	}
+}
+
+#+END_SRC
+
+#+BEGIN_SRC dot :file appstructure.png :exports results
+
+digraph G {
+	subgraph cluster_1 {
+		node [style=filled,shape=folder,colorscheme=set312,color=2, fontname="Dejavu Sans"];
+    templates -> {a [label="public_goods"]} ;
+    static -> {b [label="public_goods"]};
+    node [style=empty,shape=note,color=5];
+    b -> "project pages\nhtml templates";
+    a -> "CSS,\nJS,\nimages";
+    "models.py"; 
+    "views.py"; 
+
+    label="public_goods";
+		color=violet;
+    fontname="Dejavu Sans";
+
+	}
+}
+#+END_SRC
+
+#+BEGIN_SRC dot :file models.png :exports results
+
+digraph G {
+	subgraph cluster_3 {
+DUMMY_2 [shape=point style=invis]
+
+node [style=empty, shape=component, colorscheme=set312,color=3, fontname="Dejavu Sans"]
+Constants;
+Subsession;
+Group;
+Player;
+   }
+}
+
+#+END_SRC
+
+#+BEGIN_SRC dot :file views.png :exports results
+
+digraph G {
+	subgraph cluster_4 {
+DUMMY_3 [shape=point style=invis]
+
+node [style=empty, shape=component, colorscheme=set312,color=3, fontname="Dejavu Sans"]
+Intro;
+WaitPage;
+Results;
+page_sequence;
+   }
+}
+
+#+END_SRC
+
+#+BEGIN_SRC dot :file join.svg :exports results
+
+digraph G {
+        center = "true" ; 
+        ratio = "compress";
+
+    graph [fontname="Dejavu Sans" compound=true];
+
+	subgraph cluster_1 {
+
+    node [style=empty,color=5, shape=note];
+    "settings.py"; 
+		node [style=filled,shape=folder,colorscheme=set312,color=2];
+    App3  App2  App1 trust_c ;
+
+		color=blue;
+    style=rounded;
+    label="Project";
+
+	}
+
+	subgraph cluster_2 {
+
+		node [style=filled,shape=folder,colorscheme=set312,color=2];
+    templates;
+    a [label="trust_c"];
+		node [style=empty,shape=folder,colorscheme=set312,color=2];
+    b [label="trust_c"];
+    static;
+    node [style=empty,shape=note,color=5];
+    "models.py"; 
+    "views.py"; 
+    pp [label="project pages\nhtml templates"];
+    css [label="CSS,\nJS,\nimages"];
+
+
+    label="trust_c";
+		color=violet;
+    style=rounded;
+
+  templates -> a;
+  static -> b;
+  a -> pp;
+  b -> css;
+
+	}
+
+  nodeSettings [shape=none
+        colorscheme=set312
+        color=3
+        label=<<table>
+              <tr><td><b>SESSION_CONFIGS</b></td></tr>
+              <tr><td> {'name': 'trust_c_course',</td></tr>
+        <tr><td> 'display_name': 'Project Module Trust_C Game',</td></tr>
+        <tr><td> 'num_demo_participants': 2,</td></tr>
+        <tr><td> 'app_sequence': ['trust_c','survey'],},</td></tr>
+              </table>>];
+
+
+
+
+  nodeModels [shape=none
+        colorscheme=set312
+        color=3
+        label=<<table>
+              <tr><td><b><font color="#006400">class Constants(BaseConstants):</font></b></td></tr>
+              <tr><td>immutable values in game</td></tr>
+              <tr><td>e.g., multiplier, endowment</td></tr>
+              <tr><td><b><font color="#006400">class Subsession(BaseSubsession):</font></b></td></tr>
+              <tr><td>executed once at beginning of game</td></tr>
+              <tr><td>e.g., randomization, grouping</td></tr>
+              <tr><td><b><font color="#006400">class Group(BaseGroup):</font></b></td></tr>
+              <tr><td>fields and functions on group-level</td></tr>
+              <tr><td><b><font color="#006400">class Player(BasePlayer):</font></b></td></tr>
+              <tr><td>fields and functions on player-level</td></tr>
+              </table>>];
+
+  nodeViews [shape=none
+        colorscheme=set312
+        color=3
+        label=<<table>
+              <tr><td><b><font color="#4b0082">page_sequence</font></b></td></tr>
+              <tr><td>displayed order of pages; placed at end of file</td></tr>
+              <tr><td><b><font color="#006400">class ResultsWaitPage(WaitPage):</font></b></td></tr>
+              <tr><td>standardized waiting page</td></tr>
+              <tr><td><b><font color="#006400">class Intro(Page):</font></b></td></tr>
+              <tr><td>standard experiment page</td></tr>
+              <tr><td>class names <b>must</b> correspond to HTML template</td></tr>
+              </table>>];
+
+
+  nodeFields [shape=none
+        colorscheme=set312
+        color=3
+        label=<<table>
+              <tr><td><b><font color="#191970">create new database field</font></b></td></tr>
+              <tr><td>field_name = models.CurrencyField()</td></tr>
+              </table>>];
+
+  nodeAccess [shape=none
+        colorscheme=set312
+        color=3
+        label=<<table>
+              <tr><td><b><font color="#191970">access/get stored player data</font></b></td></tr>
+              <tr><td>p1 = self.get_player_by_id(1)</td></tr>
+              </table>>];
+
+  nodeFct [shape=none
+        colorscheme=set312
+        color=3
+        label=<<table>
+              <tr><td><b><font color="#191970">create functions</font></b> (in Player class)</td></tr>
+              <tr><td>def function_name(self):</td></tr>
+              </table>>];
+
+  nodeTemplates [shape=none
+      colorscheme=set312
+      color=3
+      label=<<table>
+            <tr><td><b><font color="#191970">conditional display</font></b></td></tr>
+            <tr><td>def is_displayed(self):</td></tr>
+            <tr><td>return TRUE</td></tr>
+            </table>>];
+
+  nodeVar [shape=none
+      colorscheme=set312
+      color=3
+      label=<<table>
+            <tr><td><b><font color="#191970">variables for one template</font></b></td></tr>
+            <tr><td>def vars_for_template(self):</td></tr>
+            <tr><td>return {'var_name':var_content, ...}</td></tr>
+            </table>>];
+      
+
+  nodeBefore [shape=none
+      colorscheme=set312
+      color=3
+      label=<<table>
+            <tr><td><b><font color="#191970">execute code before continue</font></b></td></tr>
+            <tr><td>def before_next_page(self):</td></tr>
+            </table>>];
+
+  nodeVarAll [shape=none
+      colorscheme=set312
+      color=3
+      label=<<table>
+      <tr><td><b><font color="#191970">variables for all templates</font></b></td></tr>
+      <tr><td>def vars_for_all_templates(self):</td></tr>
+      <tr><td>return {'var_name':var_content, ...}</td></tr>
+      <tr><td><b>must</b> be initialized <b>outside</b> of page class</td></tr>
+      </table>>];
+
+  nodeWait [shape=none
+      colorscheme=set312
+      color=3
+      label=<<table>
+      <tr><td><b><font color="#191970">wait for other players</font></b></td></tr>
+      <tr><td>def after_all_players_arrive(self):</td></tr>
+      </table>>];
+
+    "models.py" -> nodeModels;
+    "views.py" -> nodeViews;
+    "settings.py" -> nodeSettings;
+    nodeViews -> pp;
+   nodeModels -> nodeFields;
+    nodeModels -> nodeFct;
+    nodeModels -> nodeAccess;
+    nodeViews -> nodeTemplates;
+    nodeViews -> nodeVar;
+    nodeViews -> nodeBefore;
+    nodeViews -> nodeVarAll;
+    nodeViews -> nodeWait;
+
+  trust_c -> templates [lhead=cluster_2] ;
+}
+
+
+#+END_SRC
+
+#+RESULTS:
+[[file:join.svg]]
+
