@@ -1,6 +1,34 @@
-#+title: Trust game
-#+author: Chris Wickens
-#+latex_header: \usepackage{a4wide}
+% Created 2016-10-27 Do 09:17
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{a4wide}
+\author{Chris Wickens}
+\date{\today}
+\title{Trust game}
+\hypersetup{
+ pdfauthor={Chris Wickens},
+ pdftitle={Trust game},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 24.5.1 (Org mode 8.3.6)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
 
 \newpage
 Let’s create a Trust game, and learn some more features of oTree.
@@ -10,16 +38,18 @@ This is a trust game with 2 players. To start, Player 1 receives 10 points; Play
 The completed app is here.
 Create the app
 
-#+BEGIN_SRC bash
+\begin{verbatim}
 $ otree startapp my_trust
-#+END_SRC
+\end{verbatim}
 
-* Define models.py
+\section{Define models.py}
+\label{sec:orgheadline1}
 
-* Constants 
+\section{Constants}
+\label{sec:orgheadline2}
 First we define our app’s constants. The endowment is 10 points and the donation gets tripled.
 
-#+BEGIN_SRC python
+\begin{verbatim}
 class Constants(BaseConstants):
     name_in_url = 'my_trust'
     players_per_group = 2
@@ -27,67 +57,71 @@ class Constants(BaseConstants):
 
     endowment = c(10)
     multiplication_factor = 3
-#+END_SRC
+\end{verbatim}
 
-* Fields
+\section{Fields}
+\label{sec:orgheadline3}
 Then we think about how to define fields on the data model. There are 2 critical data points to capture: the “sent” amount from P1, and the “sent back” amount from P2.
 
 Your first instinct may be to define the fields on the Player like this:
 
-#+BEGIN_SRC python
+\begin{verbatim}
 class Player(BasePlayer):
 
     sent_amount = models.CurrencyField()
     sent_back_amount = models.CurrencyField()
-#+END_SRC
+\end{verbatim}
 
-The problem with this model is that sent_amount only applies to P1, and sent_back_amount only applies to P2. It does not make sense that P1 should have a field called sent_back_amount. How can we make our data model more accurate?
+The problem with this model is that sent\(_{\text{amount}}\) only applies to P1, and sent\(_{\text{back}}_{\text{amount}}\) only applies to P2. It does not make sense that P1 should have a field called sent\(_{\text{back}}_{\text{amount}}\). How can we make our data model more accurate?
 
-We can do it by defining those fields at the Group level. This makes sense because each group has exactly 1 sent_amount and exactly 1 sent_back_amount:
+We can do it by defining those fields at the Group level. This makes sense because each group has exactly 1 sent\(_{\text{amount}}\) and exactly 1 sent\(_{\text{back}}_{\text{amount}}\):
 
-#+BEGIN_SRC python
+\begin{verbatim}
 class Group(BaseGroup):
 
     sent_amount = models.CurrencyField()
     sent_back_amount = models.CurrencyField()
-#+END_SRC
+\end{verbatim}
 
 Even though it may not seem that important at this point, modeling our data correctly will make the rest of our work easier.
 
-Let’s let P1 choose from a dropdown menu how much to donate, rather than entering free text. To do this, we use the choices argument, as well as the currency_range function:
+Let’s let P1 choose from a dropdown menu how much to donate, rather than entering free text. To do this, we use the choices argument, as well as the currency\(_{\text{range}}\) function:
 
-#+BEGIN_SRC python
+\begin{verbatim}
 sent_amount = models.CurrencyField(
     choices=currency_range(0, Constants.endowment, c(1)),
 )
-#+END_SRC
+\end{verbatim}
 
 We’d also like P2 to use a dropdown menu to choose how much to send back, but we can’t specify a fixed list of choices, because P2’s available choices depend on how much P1 donated. I’ll show a bit later how we can make this list dynamic.
 
 Also, let’s define the payoff function on the group:
 
-#+BEGIN_SRC python 
+\begin{verbatim}
 def set_payoffs(self):
     p1 = self.get_player_by_id(1)
     p2 = self.get_player_by_id(2)
     p1.payoff = Constants.endowment - self.sent_amount + self.sent_back_amount
     p2.payoff = self.sent_amount * Constants.multiplication_factor - self.sent_back_amount
-#+END_SRC
+\end{verbatim}
 
 Define the templates and views
 
-* We need 3 pages:
+\section{We need 3 pages:}
+\label{sec:orgheadline4}
 
-    - P1’s “Send” page
-    - P2’s “Send back” page
-    - “Results” page that both users see.
+\begin{itemize}
+\item P1’s “Send” page
+\item P2’s “Send back” page
+\item “Results” page that both users see.
+\end{itemize}
 
 It would also be good if game instructions appeared on each page so that players are clear how the game works.
 Instructions.html
 
 To create the instructions, we can define a file Instructions.html that gets included on each page.
 
-#+BEGIN_SRC html
+\begin{verbatim}
 {% load otree_tags staticfiles %}
 
 <div class="instructions well well-lg">
@@ -106,13 +140,14 @@ To create the instructions, we can define a file Instructions.html that gets inc
     Once B receives the tripled points he can decide to send some or all of his points to A.
 </p>
 </div>
-#+END_SRC
+\end{verbatim}
 
-* Send.html
+\section{Send.html}
+\label{sec:orgheadline5}
 
-This page looks like the templates we have seen so far. Note the use of {% include %} to automatically insert another template.
+This page looks like the templates we have seen so far. Note the use of \{\% include \%\} to automatically insert another template.
 
-#+BEGIN_SRC html
+\begin{verbatim}
 {% extends "global/Base.html" %}
 {% load staticfiles otree_tags %}
 
@@ -133,11 +168,11 @@ This page looks like the templates we have seen so far. Note the use of {% inclu
     {% next_button %}
 
 {% endblock %}
-#+END_SRC
+\end{verbatim}
 
 We also define the view in views.py:
 
-#+BEGIN_SRC python
+\begin{verbatim}
 class Send(Page):
 
     form_model = models.Group
@@ -145,16 +180,17 @@ class Send(Page):
 
     def is_displayed(self):
         return self.player.id_in_group == 1
-#+END_SRC
+\end{verbatim}
 
-The {% formfield %} in the template must match the form_model and form_fields in the view.
+The \{\% formfield \%\} in the template must match the form\(_{\text{model}}\) and form\(_{\text{fields}}\) in the view.
 
-Also, we use is_displayed() to only show this to P1; P2 skips the page. For more info on id_in_group, see Groups and multiplayer games.
+Also, we use is\(_{\text{displayed}}\)() to only show this to P1; P2 skips the page. For more info on id\(_{\text{in}}_{\text{group}}\), see Groups and multiplayer games.
 SendBack.html
 
-* This is the page that P2 sees to send money back. Here is the template:
+\section{This is the page that P2 sees to send money back. Here is the template:}
+\label{sec:orgheadline6}
 
-#+BEGIN_SRC html
+\begin{verbatim}
 {% extends "global/Base.html" %}
 {% load staticfiles otree_tags %}
 
@@ -176,14 +212,15 @@ SendBack.html
     {% next_button %}
 
 {% endblock %}
-#+END_SRC
+\end{verbatim}
 
-* Here is the code from views.py. Notes:
+\section{Here is the code from views.py. Notes:}
+\label{sec:orgheadline7}
 
-    We use vars_for_template() to pass the variable tripled_amount to the template. Django does not let you do calculations directly in a template, so this number needs to be calculated in Python code and passed to the template.
-    We define a method sent_back_amount_choices to populate the dropdown menu dynamically. This is the feature called {field_name}_choices, which is explained here: Dynamic form field validation.
+We use vars\(_{\text{for}}_{\text{template}}\)() to pass the variable tripled\(_{\text{amount}}\) to the template. Django does not let you do calculations directly in a template, so this number needs to be calculated in Python code and passed to the template.
+We define a method sent\(_{\text{back}}_{\text{amount}}_{\text{choices}}\) to populate the dropdown menu dynamically. This is the feature called \{field\(_{\text{name}}\)\}\(_{\text{choices}}\), which is explained here: Dynamic form field validation.
 
-#+BEGIN_SRC python
+\begin{verbatim}
 class SendBack(Page):
 
     form_model = models.Group
@@ -203,13 +240,14 @@ class SendBack(Page):
             self.group.sent_amount * Constants.multiplication_factor,
             c(1)
         )
-#+END_SRC
+\end{verbatim}
 
-* Results
+\section{Results}
+\label{sec:orgheadline8}
 
-The results page needs to look slightly different for P1 vs. P2. So, we use the {% if %} statement (part of Django’s template language) to condition on the current player’s id_in_group.
+The results page needs to look slightly different for P1 vs. P2. So, we use the \{\% if \%\} statement (part of Django’s template language) to condition on the current player’s id\(_{\text{in}}_{\text{group}}\).
 
-#+BEGIN_SRC python
+\begin{verbatim}
 {% extends "global/Base.html" %}
 {% load staticfiles otree_tags %}
 
@@ -239,30 +277,31 @@ The results page needs to look slightly different for P1 vs. P2. So, we use the 
     {% include 'my_trust/Instructions.html' %}
 
 {% endblock %}
-#+END_SRC
+\end{verbatim}
 
 Here is the Python code for this page in views.py:
-#+BEGIN_SRC python
+\begin{verbatim}
 class Results(Page):
 
     def vars_for_template(self):
         return {
             'tripled_amount': self.group.sent_amount * Constants.multiplication_factor
         }
-#+END_SRC
+\end{verbatim}
 
-* Wait pages and page sequence
+\section{Wait pages and page sequence}
+\label{sec:orgheadline9}
 
 This game has 2 wait pages:
 
-    P2 needs to wait while P1 decides how much to send
-    P1 needs to wait while P2 decides how much to send back
+P2 needs to wait while P1 decides how much to send
+P1 needs to wait while P2 decides how much to send back
 
-After the second wait page, we should calculate the payoffs. So, we use after_all_players_arrive.
+After the second wait page, we should calculate the payoffs. So, we use after\(_{\text{all}}_{\text{players}}_{\text{arrive}}\).
 
 So, we define these pages:
 
-#+BEGIN_SRC python
+\begin{verbatim}
 class WaitForP1(WaitPage):
     pass
 
@@ -270,10 +309,11 @@ class ResultsWaitPage(WaitPage):
 
     def after_all_players_arrive(self):
         self.group.set_payoffs()
-#+END_SRC
+\end{verbatim}
 
-* Then we define the page sequence:
-#+BEGIN_SRC python
+\section{Then we define the page sequence:}
+\label{sec:orgheadline10}
+\begin{verbatim}
 page_sequence = [
     Send,
     WaitForP1,
@@ -281,26 +321,29 @@ page_sequence = [
     ResultsWaitPage,
     Results,
 ]
-#+END_SRC
+\end{verbatim}
 
-* Add an entry to SESSION_CONFIGS in settings.py
+\section{Add an entry to SESSION\(_{\text{CONFIGS}}\) in settings.py}
+\label{sec:orgheadline11}
 
-#+BEGIN_SRC python
+\begin{verbatim}
 {
     'name': 'my_trust',
     'display_name': "My Trust Game (simple version from tutorial)",
     'num_demo_participants': 2,
     'app_sequence': ['my_trust'],
 },
-#+END_SRC
+\end{verbatim}
 
-* Reset the database and run
+\section{Reset the database and run}
+\label{sec:orgheadline12}
 
-#+BEGIN_SRC bash
+\begin{verbatim}
 otree resetdb
 otree runserver
-#+END_SRC
+\end{verbatim}
 
-Then open your browser to http://127.0.0.1:8000 to play the game.
+Then open your browser to \url{http://127.0.0.1:8000} to play the game.
 
 Note: You need to run resetdb every time you create a new app, or when you add/change/remove a field in models.py. This is because you have new fields in models.py, and the SQL database needs to be re-generated to create these tables and columns.
+\end{document}

@@ -18,7 +18,7 @@
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = 'file:///home/cataclysmic/Research/teaching/reveal.js/css/print/pdf.css';
+        link.href = 'http://lab.hakim.se/reveal-js/css/print/pdf.css';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
     }
 </script>
@@ -26,7 +26,12 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Getting started with oTree</h1><h2 class="author">Felix Albrecht</h2><p class="date">Created: 2016-10-26 Mi 19:44</p>
+<section id="sec-title-slide"><p><img src="project.jpg" width="700px" /></p>
+</section>
+
+<section id="sec-title-slide"><h1 class="title">Getting started with oTree</h1><h2 class="author">Felix Albrecht</h2><p class="date">Get slides: <pre><code class="bash" >git clone https://github.com/cataclysmic/otree-intro.git
+</code></pre>
+</p>
 </section>
 
 <section>
@@ -59,7 +64,11 @@
 <h3 id="orgheadline3"></h3>
 <ul>
 <li><del>You need it for this course!</del></li>
-<li>Learn a (several) <b>new skill(s)</b>!</li>
+<li>Learn a (several) <b>new <span class="underline">marketable</span> skill(s)</b>!
+<ul>
+<li>e.g., <a href="http://www.gfk.com/de/" target="new" >GFK Market Research</a> uses otree</li>
+
+</ul></li>
 <li>Learn (about web)-programming!
 <ul>
 <li>oTree is based on: <b>Django</b> (Python for web), <b>HTML5</b>, <b>JavaScript</b>, <b>CSS</b></li>
@@ -74,14 +83,8 @@
 </section>
 <section>
 <section id="slide-orgheadline5" data-background="#006400">
-    <h2 id="orgheadline5"><font  color="#ffffff">Let's look at examples!</font></h2>
-<ol>
-<li>But before ... install otree</li>
-<div class="org-src-container">
-<pre><code class="bash" > pip install otree_core
-</code></pre>
-</div>
-</ol>
+<h2 id="orgheadline5">Let's look at examples!</h2>
+
 </section>
 </section>
 <section>
@@ -92,9 +95,9 @@
 <section id="slide-orgheadline6">
 <h3 id="orgheadline6"></h3>
 <ol>
-    <li><h4>Understanding the structure of an oTree-App</h4></li>
-        <li><h4>Programming our first oTree-app</h4></li>
-            <li><h4>Taking a peek at online-resources</h4></li>
+<li>Understanding the structure of an oTree-App</li>
+<li>Programming our first oTree-app</li>
+<li>Taking a peek at online-resources</li>
 
 </ol>
 
@@ -140,11 +143,18 @@
 <section>
 <section id="slide-orgheadline13">
 <h2 id="orgheadline13">Today's Roadmap</h2>
+<h3>We'll create a "trust game" app.</h3>
 <div class="outline-text-2" id="text-orgheadline13">
 </div></section>
+
 <section id="slide-orgheadline10">
-<h3 id="orgheadline10">Create your working environment</h3>
+<h3 id="orgheadline10">But first: Create your working environment</h3>
 <ol>
+<li>install otree</li>
+<div class="org-src-container">
+<pre><code class="bash" >pip install otree_core
+</code></pre>
+</div>
 <li>create a project folder</li>
 <div class="org-src-container">
 <pre><code class="bash" >cd ~/PATH_TO_FOLDER
@@ -175,12 +185,15 @@ otree startapp trust_c
 <section id="slide-orgheadline12">
 <h3 id="orgheadline12">What do we need <span class="underline">in</span> the app?</h3>
 <ol>
-<li>Introduction page for game</li>
-<li>Somewhere to store sent amount (of truster)</li>
-<li>Somewhere to store sent back amount (of trustee)</li>
-<li>Mechanism to increase sent amount</li>
-<li>Mechanism to calculate payoff</li>
-<li>Maybe a Survey?</li>
+<li style="margin:20px 0 0 0;">Introduction page for game</li>
+<li style="margin:20px 0 0 0;">Somewhere to store sent amount (of truster)</li>
+<li style="margin:20px 0 0 0;">Somewhere to store sent back amount (of trustee)</li>
+<li style="margin:20px 0 0 0;">Mechanism to increase sent amount</li>
+<li style="margin:20px 0 0 0;">Mechanism to calculate payoff</li>
+<li style="margin:20px 0 0 0;">Mechanism to calculate payoff</li>
+<li style="margin:20px 0 0 0;">Send page for truster (not seen by trustee)</li>
+<li style="margin:20px 0 0 0;">Send Back page for trustee (not seen by truster)</li>
+<li style="margin:20px 0 0 0;">Maybe a Survey?</li>
 
 </ol>
 
@@ -195,7 +208,7 @@ otree startapp trust_c
 <h3 id="orgheadline14"></h3>
 
 <div class="figure">
-    <p><a href="./join.svg"><img src="./join.png" alt="join.png"/></a>
+    <p><a href="join.svg" target="new"><img src="./join.png" alt="join.png" width="600px" /></a>
 </p>
 </div>
 
@@ -204,20 +217,22 @@ otree startapp trust_c
 <section id="slide-orgheadline15">
 <h3 id="orgheadline15">What do we need <span class="underline">in</span> the app?</h3>
 <ol>
-    <li class="off"><input type="checkbox"> Introduction page for game</li>
-    <li class="off"><input type="checkbox"> Somewhere to store sent amount (of truster)</li>
-    <li class="off"><input type="checkbox"> Somewhere to store sent back amount (of trustee)</li>
-    <li class="off"><input type="checkbox"> Mechanism to increase sent amount</li>
-    <li class="off"><input type="checkbox"> Mechanism to calculate payoff</li>
-    <li class="off"><input type="checkbox"> Maybe a Survey? -&gt; Second App</li>
-
+    <li class="off" style="margin:20px 0 0 0;"><input type="checkbox"> Introduction page for game</li>
+    <li class="off" style="margin:20px 0 0 0;"><input type="checkbox"> Somewhere to store sent amount (of truster)</li>
+    <li class="off" style="margin:20px 0 0 0;"><input type="checkbox"> Somewhere to store sent back amount (of trustee)</li>
+    <li class="off" style="margin:20px 0 0 0;"><input type="checkbox"> Mechanism to increase sent amount</li>
+    <li class="off" style="margin:20px 0 0 0;"><input type="checkbox"> Mechanism to calculate payoff</li>
+    <li class="off" style="margin:20px 0 0 0;"><input type="checkbox">Mechanism to calculate payoff</li>
+    <li class="off" style="margin:20px 0 0 0;"><input type="checkbox">Send page for truster (not seen by trustee)</li>
+    <li class="off" style="margin:20px 0 0 0;"><input type="checkbox">Send Back page for trustee (not seen by truster)</li>
+    <li class="off" style="margin:20px 0 0 0;"><input type="checkbox"> Maybe a Survey? -&gt; Second App</li>
 </ol>
 </section>
 </section>
 </div>
 </div>
-<script src="file:///home/cataclysmic/Research/teaching/reveal.js/lib/js/head.min.js"></script>
-<script src="file:///home/cataclysmic/Research/teaching/reveal.js/js/reveal.js"></script>
+<script src="http://lab.hakim.se/reveal-js/lib/js/head.min.js"></script>
+<script src="http://lab.hakim.se/reveal-js/js/reveal.js"></script>
 
 <script>
 // Full list of configuration options available here:
@@ -244,9 +259,7 @@ multiplex: {
 
 // Optional libraries used to extend on reveal.js
 dependencies: [
- { src: 'http://lab.hakim.se/reveal-js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
- { src: 'http://lab.hakim.se/reveal-js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: 'http://lab.hakim.se/reveal-js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } }]
+ { src: 'http://lab.hakim.se/reveal-js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }]
 });
 </script>
 </body>

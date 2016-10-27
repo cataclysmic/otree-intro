@@ -8,9 +8,9 @@
 # OPTIONS: reveal_single_file:t
 #+OPTIONS: reveal_title_slide:auto
 #+REVEAL_MATHJAX_URL: file:///home/cataclysmic/Research/teaching/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML
-#+REVEAL_ROOT: file:///home/cataclysmic/Research/teaching/reveal.js/
-# REVEAL_ROOT: http://lab.hakim.se/reveal-js/
-#+REVEAL_PLUGINS: (highlight markdown)
+# REVEAL_ROOT: file:///home/cataclysmic/Research/teaching/reveal.js/
+#+REVEAL_ROOT: http://lab.hakim.se/reveal-js/
+#+REVEAL_PLUGINS: (highlight)
 #+REVEAL_HIGHLIGHT_CSS: stata.css
 # ####################################
 #+TITLE: Getting started with oTree
@@ -34,7 +34,8 @@
 ** EMPTY
 
 - +You need it for this course!+
-- Learn a (several) *new skill(s)*!
+- Learn a (several) *new _marketable_ skill(s)*!
+  - e.g., [[http://www.gfk.com/de/][GFK Market Research]] uses otree
 - Learn (about web)-programming!
   - oTree is based on: *Django* (Python for web), *HTML5*, *JavaScript*, *CSS*
   - uses heavily: /JQuery/, /Bootstrap/, /HighCharts/
@@ -42,7 +43,6 @@
 
 * Let's look at examples!
     :PROPERTIES:
-    :reveal_background: #006400
     :reveal_background: #006400
     :END:
 
@@ -105,7 +105,10 @@ otree startapp trust_c
 3. Somewhere to store sent back amount (of trustee)
 4. Mechanism to increase sent amount
 5. Mechanism to calculate payoff
-6. Maybe a Survey?
+6. Send page for truster (not seen by trustee)
+7. Send Back page for trustee (not seen by truster)
+8. Results page
+9. Maybe a Survey?
 
 * Let's understand the structure of an "App"
 
@@ -125,6 +128,9 @@ otree startapp trust_c
 3. [ ] Somewhere to store sent back amount (of trustee)
 4. [ ] Mechanism to increase sent amount
 5. [ ] Mechanism to calculate payoff
-6. [ ] Maybe a Survey? -> Second App
+6. [ ] Send page for truster (not seen by trustee)
+7. [ ] Send Back page for trustee (not seen by truster)
+8. [ ] Results page
+9. [ ] Maybe a Survey? -> Second App
 
 
