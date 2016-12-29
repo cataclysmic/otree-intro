@@ -1,0 +1,24 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+{% block title %}
+    Bankverbindung
+{% endblock %}
+
+{% block content %}
+
+
+	<p>Bitte tragen Sie die für den Banküberweisung notwendigen Daten ein.</p>
+<p>	
+	{% formfield player.iban %}
+	{% formfield player.bic %}
+	<div style="margin-top=-10px;font-size:10pt;color:grey">(Sollten Sie sich unsicher über Ihre IBAN/BIC sein, können sie unter <a href="https://de.iban.com", target="new" title="Öffnet eine neue Seite.">iban.com</a> Ihre IBAN validieren und bekommen die korrekte BIC Ihres Kreditinstituts angezeigt.)</div></p></br>
+    {% formfield player.name %}
+	{% formfield player.vorname %}
+    {% formfield player.street%}
+    {% formfield player.city%}
+    {% formfield player.zipcode%}
+
+  {% include "iban/modal.html" %}
+  <p>Sollten Sie Fragen haben, schreiben Sie bitte eine Mail an den zuständigen Mitarbeiter <b>NAME</b>: <a href="mailto:EMAIL"><b>EMAIL</b></a></p>
+
+{% endblock %}
