@@ -13,7 +13,7 @@ from otree.models import BaseSubsession, BaseGroup, BasePlayer
 # </standard imports>
 
 # additional models import / requires "django_iban" to be installed
-from django_iban.fields import IBANField , SWIFTBICField
+from localflavor.generic.models import IBANField, BICField
 
 author = 'Felix Albrecht ,Thomas Graeber, Thorben Woelk'
 
@@ -40,7 +40,7 @@ class Player(BasePlayer):
 
     iban = IBANField(verbose_name="IBAN")
 
-    bic = SWIFTBICField(verbose_name="BIC")
+    bic = BICField(verbose_name="BIC")
 
     name = models.CharField(verbose_name="Nachname:",max_length=50)
 
@@ -50,5 +50,5 @@ class Player(BasePlayer):
 
     city = models.CharField(verbose_name="Stadt:", max_length=50)
 
-    zipcode = models.IntegerField(verbose_name="PLZ:", max_length=10)
+    zipcode = models.IntegerField(verbose_name="PLZ:")
 
