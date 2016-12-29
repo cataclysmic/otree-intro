@@ -12,7 +12,7 @@ from otree.constants import BaseConstants
 from otree.models import BaseSubsession, BaseGroup, BasePlayer
 # </standard imports>
 
-# additional models import / requires "django_iban" to be installed
+# additional models import / requires "localflavor" to be installed
 from localflavor.generic.models import IBANField, BICField
 
 author = 'Felix Albrecht ,Thomas Graeber, Thorben Woelk'
