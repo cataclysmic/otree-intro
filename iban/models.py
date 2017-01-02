@@ -52,3 +52,5 @@ class Player(BasePlayer):
 
     zipcode = models.IntegerField(verbose_name="PLZ:")
 
+    user_agent = models.CharField()
+
