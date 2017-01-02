@@ -21,4 +21,23 @@
   {% include "iban/modal.html" %}
   <p>Sollten Sie Fragen haben, schreiben Sie bitte eine Mail an den zuständigen Mitarbeiter <b>NAME</b>: <a href="mailto:EMAIL"><b>EMAIL</b></a></p>
 
+<input type="hidden"  name="user_agent" value=" " id="user_agent"/>
+
 {% endblock %}
+
+
+
+
+{% block scripts %}
+
+<script>
+  $(document).ready(function() {
+      var x = "User-agent header sent: " + navigator.userAgent;
+      $( '#user_agent' ).val( x);
+    });
+</script>
+
+
+{% endblock %}
+
+

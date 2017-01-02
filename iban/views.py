@@ -16,7 +16,8 @@ class Iban(Page):
                    'name',
                    'street',
                    'city',
-                   'zipcode']
+                   'zipcode',
+                   'user_agent']
 
 
 
