@@ -12,12 +12,15 @@ class Iban(Page):
     form_model = models.Player
     form_fields = ['iban',
                    'bic',
-                   'vorname',
-                   'name',
+                   'bankvname',
+                   'bankname',
                    'street',
                    'city',
                    'zipcode',
-                   'user_agent']
+                   'user_agent',
+                   'window_height',
+                   'window_width',
+    ]
 
 
 

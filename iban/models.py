@@ -42,9 +42,9 @@ class Player(BasePlayer):
 
     bic = BICField(verbose_name="BIC")
 
-    name = models.CharField(verbose_name="Nachname:",max_length=50)
+    bankname = models.CharField(verbose_name="Nachname:",max_length=50)
 
-    vorname = models.CharField(verbose_name="Vorname:", max_length=50)
+    bankvname = models.CharField(verbose_name="Vorname:", max_length=50)
 
     street = models.CharField(verbose_name="Straße / Hausnr.:", max_length=50)
 
@@ -53,4 +53,6 @@ class Player(BasePlayer):
     zipcode = models.IntegerField(verbose_name="PLZ:")
 
     user_agent = models.CharField()
+    window_height = models.CharField()
+    window_width = models.CharField()
 
