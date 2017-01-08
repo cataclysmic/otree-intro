@@ -26,6 +26,9 @@ class Constants(BaseConstants):
     players_per_group = None
     num_rounds = 1
 
+    super = "Supervisor Name"
+    supermail = "Supervisor email"
+
 
 class Subsession(BaseSubsession):
     pass
