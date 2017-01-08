@@ -1,5 +1,6 @@
 {% extends "global/Base.html" %}
-{% load staticfiles otree_tags %}
+{% load staticfiles %}
+
 {% block title %}
 	Bitte geben Sie hier die für den Banktransfer notwendigen Daten ein.
 {% endblock %}
@@ -102,6 +103,19 @@
     });
 </script>
 
+{% block styles %}
+
+<style>
+.page-header {
+    background: url("{% static "iban/uni_bonn.svg" %}");
+    background-size: 17%;
+    background-repeat: no-repeat;
+    background-position: right top;
+}
+</style>
+
+
+{% endblock %}
 
 {% endblock %}
 
