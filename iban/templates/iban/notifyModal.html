@@ -22,10 +22,16 @@
     </div>
   </div>
 
+<input type="hidden"  name="ibanmsgseen" id="id_ibanmsgseen"/>
+
 {% block scripts %}
-<script>
- $(document).ready( function(){
-		$("#StartMsg").modal('toggle');
-});
-</script>
+    <script>
+        $(document).ready( function(){
+            var seen = {{msgseen}};
+            if(seen != 1){
+                $("#StartMsg").modal('toggle');
+            }
+                $( '#id_ibanmsgseen' ).val(1);
+        });
+    </script>
 {% endblock %}

@@ -20,10 +20,19 @@ class Iban(Page):
                    'user_agent',
                    'window_height',
                    'window_width',
+                   'ibanmsgseen',
     ]
+    def vars_for_template(self):
+        return{
+            "msgseen":self.player.ibanmsgseen,
+        }
 
+
+class End(Page):
+    pass
 
 
 page_sequence = [
     Iban,
+    End
 ]

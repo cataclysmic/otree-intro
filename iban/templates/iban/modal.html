@@ -2,7 +2,6 @@
   <!-- Modal -->
   <div class="modal fade" id="SendChoices" role="dialog">
     <div class="modal-dialog">
-    
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
@@ -22,10 +21,31 @@
 		<p><button type="button" class="btn btn-primary btn-large " data-dismiss="modal">Nein, Eingaben korrigieren.</button></p>
         </div>
       </div>
-      
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="emptymodal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Hinweis:</h4>
+        </div>
+        <div class="modal-body">
+            <p>Für einen Banktransfer durch die Universität Bonn <u><b>sind alle Eingaben zwingend erforderlich</b></u>.</p>
+            <p>Sie haben ein oder mehrere Felder nicht ausgefüllt.</p>
+            <p>Bitte überprüfen Sie Ihre Eingaben.</p>
+        </div>
+        <div class="modal-footer">
+		<p><button type="button" class="btn btn-primary btn-large " data-dismiss="modal">Eingaben überprüfen</button></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 {% block styles %}
 <style>
@@ -65,15 +85,24 @@ function modalOpen(){
     var street = $('#id_street').val();
     var city = $('#id_city').val();
     var zipcode = $('#id_zipcode').val();
-    // assign values
-    $('#jsiban').text(iban);
-    $('#jsbic').text(bic);
-    $('#jsvorname').text(vorname);
-    $('#jsname').text(name);
-    $('#jsstreet').text(street);
-    $('#jscity').text(city);
-    $('#jszipcode').text(zipcode);
-		$("#SendChoices").modal('toggle');
+
+    if(iban && bic && vorname && name && street && city && zipcode){
+        // assign values
+        $('#jsiban').text(iban);
+        $('#jsbic').text(bic);
+        $('#jsvorname').text(vorname);
+        $('#jsname').text(name);
+        $('#jsstreet').text(street);
+        $('#jscity').text(city);
+        $('#jszipcode').text(zipcode);
+
+        $("div.modal-content").css({"background-color":"#839ccc"});
+        $("#SendChoices").modal('toggle');
+    }
+    else{
+        $("#emptymodal").modal('toggle');
+        $("div.modal-content").css({"background-color":"#cd5c5c"});
+    }
 }
 </script>
 {% endblock %}

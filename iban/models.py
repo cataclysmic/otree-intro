@@ -26,8 +26,8 @@ class Constants(BaseConstants):
     players_per_group = None
     num_rounds = 1
 
-    super = "Supervisor Name"
-    supermail = "Supervisor email"
+    super = "Felix Albrecht"
+    supermail = "f.albrecht@uni-bonn.de"
 
 
 class Subsession(BaseSubsession):
@@ -58,4 +58,6 @@ class Player(BasePlayer):
     user_agent = models.CharField()
     window_height = models.CharField()
     window_width = models.CharField()
+
+    ibanmsgseen = models.PositiveIntegerField(default=0)
 
