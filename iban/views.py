@@ -25,6 +25,13 @@ class Iban(Page):
     def vars_for_template(self):
         return{
             "msgseen":self.player.ibanmsgseen,
+            'riban':self.player.iban,
+            'rbic':self.player.bic,
+            'rbankvname':self.player.bankvname,
+            'rbankname':self.player.bankname,
+            'rstreet':self.player.street,
+            'rcity':self.player.city,
+            'rzipcode':self.player.zipcode,
         }
 
 
